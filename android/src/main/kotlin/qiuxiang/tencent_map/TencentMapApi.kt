@@ -20,9 +20,9 @@ class TencentMapApi(private val tencentMap: TencentMap) : Pigeon.TencentMapApi {
 
   override fun setMapType(type: MapType) {
     mapView.map.mapType = when (type) {
-      MapType.normal -> MAP_TYPE_NORMAL
-      MapType.satellite -> MAP_TYPE_SATELLITE
-      MapType.dark -> MAP_TYPE_DARK
+      MapType.NORMAL -> MAP_TYPE_NORMAL
+      MapType.SATELLITE -> MAP_TYPE_SATELLITE
+      MapType.DARK -> MAP_TYPE_DARK
     }
   }
 

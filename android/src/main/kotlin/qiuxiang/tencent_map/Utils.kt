@@ -47,10 +47,10 @@ fun Pigeon.MyLocationStyle.toMyLocationStyle(): MyLocationStyle {
     myLocationType?.let {
       style.myLocationType(
         when (it) {
-          Pigeon.MyLocationType.followNoCenter -> MyLocationStyle.LOCATION_TYPE_FOLLOW_NO_CENTER
-          Pigeon.MyLocationType.locationRotate -> MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE
-          Pigeon.MyLocationType.locationRotateNoCenter -> MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER
-          Pigeon.MyLocationType.mapRotateNoCenter -> MyLocationStyle.LOCATION_TYPE_MAP_ROTATE_NO_CENTER
+          Pigeon.MyLocationType.FOLLOW_NO_CENTER -> MyLocationStyle.LOCATION_TYPE_FOLLOW_NO_CENTER
+          Pigeon.MyLocationType.LOCATION_ROTATE -> MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE
+          Pigeon.MyLocationType.LOCATION_ROTATE_NO_CENTER -> MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER
+          Pigeon.MyLocationType.MAP_ROTATE_NO_CENTER -> MyLocationStyle.LOCATION_TYPE_MAP_ROTATE_NO_CENTER
         }
       )
     }

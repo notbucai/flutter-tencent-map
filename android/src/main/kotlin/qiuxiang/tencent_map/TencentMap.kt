@@ -14,6 +14,7 @@ import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition
 import com.tencent.tencentmap.mapsdk.maps.model.Marker
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.platform.PlatformView
+import android.util.Log
 
 class TencentMap(val binding: FlutterPlugin.FlutterPluginBinding, context: Context, args: HashMap<*, *>) :
   PlatformView {
@@ -42,6 +43,10 @@ class TencentMap(val binding: FlutterPlugin.FlutterPluginBinding, context: Conte
     mapView.map.setOnMapLongClickListener { mapHandler.onLongPress(it.toLatLng()) {} }
     mapView.map.setOnCameraChangeListener(object : TencentMap.OnCameraChangeListener {
       override fun onCameraChange(position: CameraPosition) {
+        // log position
+        // log("onCameraChange: ${position.toCameraPosition()}")
+        Log.d("MarkerApi onCameraChange", position.toString())
+
         mapHandler.onCameraMove(position.toCameraPosition()) {}
       }
 
