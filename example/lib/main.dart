@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tencent_map/tencent_map.dart';
+import 'package:tencent_map_example/pages/choose_location.dart';
 
 import 'pages/location.dart';
 import 'pages/add_remove_marker.dart';
@@ -15,25 +16,15 @@ void main() {
   runApp(const App());
 }
 
-class App extends StatefulWidget {
+class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
   @override
-  State<App> createState() => _AppState();
-}
-
-class _AppState extends State<App> {
-  @override
-  void initState() {
-    super.initState();
+  Widget build(BuildContext context) {
     TencentMap.init(
       agreePrivacy: true,
       iosApiKey: 'TOCBZ-IY266-74KSP-MTWNM-PBYAT-LWB3O',
     );
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
         useMaterial3: true,
@@ -45,6 +36,7 @@ class _AppState extends State<App> {
       ),
       home: Scaffold(
         body: ListView(children: [
+          Item('test', (_) => const ChooseLocation()),
           Item('地图类型切换', (_) => const MapTypesPage()),
           Item('列表内嵌地图', (_) => const ListViewPage()),
           Item('视野移动', (_) => const MoveCameraPage()),

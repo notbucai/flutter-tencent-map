@@ -2,6 +2,8 @@ name: tencent_map_example
 description: Demonstrates how to use the tencent_map plugin.
 publish_to: "none"
 
+version: 1.0.0
+
 environment:
   sdk: ">=2.17.1 <3.0.0"
 
@@ -11,7 +13,7 @@ dependencies:
   tencent_map:
     path: ../
   cupertino_icons: ^1.0.2
-  screenshot: ^1.2.3
+  screenshot: 2.1.0
   permission_handler: ^9.2.0
 
 dev_dependencies:
