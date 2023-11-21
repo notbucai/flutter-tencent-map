@@ -1,3 +1,4 @@
+import Foundation
 import QMapKit
 
 class _TencentMapApi: NSObject, TencentMapApi {
@@ -67,7 +68,9 @@ class _TencentMapApi: NSObject, TencentMapApi {
         mapView.showsUserLocation = enabled.boolValue
     }
 
-    func setMyLocationLocation(_: Location, error _: AutoreleasingUnsafeMutablePointer<FlutterError?>) {}
+    func setMyLocationLocation(_: Location, error _: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
+        
+    }
 
     func setMyLocationStyleStyle(_: MyLocationStyle, error _: AutoreleasingUnsafeMutablePointer<FlutterError?>) {}
 
@@ -80,11 +83,24 @@ class _TencentMapApi: NSObject, TencentMapApi {
     }
 
     func add(_: PolylineOptions, error _: AutoreleasingUnsafeMutablePointer<FlutterError?>) -> String? {
+        // log
+        print("add polyline")
         return ""
     }
 
-    func add(_: MarkerOptions, error _: AutoreleasingUnsafeMutablePointer<FlutterError?>) -> String? {
-        return ""
+    var annotationInfo:[QPointAnnotation:MarkerOptions] = [:];
+    // 
+    var annotationInfoId:[QPointAnnotation: String] = [:];
+
+    func add(_ options: MarkerOptions, error _: AutoreleasingUnsafeMutablePointer<FlutterError?>) -> String? {
+        let pointAnnotation = QPointAnnotation()
+        pointAnnotation.coordinate = CLLocationCoordinate2DMake(options.position.latitude!.doubleValue, options.position.longitude!.doubleValue)
+        annotationInfo[pointAnnotation] = options
+        // id 随机
+        let id = UUID().uuidString;
+        annotationInfoId[pointAnnotation] = id;
+        mapView.addAnnotation(pointAnnotation)
+        return id;
     }
 
     func destoryWithError(_: AutoreleasingUnsafeMutablePointer<FlutterError?>) {}

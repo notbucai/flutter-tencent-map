@@ -21,6 +21,6 @@ A new Flutter plugin project.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
   s.swift_version = '5.0'
 
-  s.dependency 'Tencent-MapSDK', '~> 4.5.7'
+  s.dependency 'Tencent-MapSDK', '~> 5.2.1'
   s.static_framework = true
 end
