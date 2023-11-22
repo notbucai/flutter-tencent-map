@@ -23,7 +23,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     TencentMap.init(
       agreePrivacy: true,
-      iosApiKey: 'TOCBZ-IY266-74KSP-MTWNM-PBYAT-LWB3O',
+      iosApiKey: 'F4QBZ-2TE6J-O3IFL-XUVAD-65HQ6-N4BFS',
     );
     return MaterialApp(
       theme: ThemeData(
