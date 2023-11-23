@@ -1,3 +1,14 @@
+# Flutter腾讯地图
+主要是为了实现地图选点。
+
+参考 example/lib/pages/choose_location.dart
+
+支持ios&android
+<!-- ![位置选择](./show/choose-location.jpg) -->
+<img src="./show/choose-location.jpg" width="200" />
+
+
+# 插件原描述
 flutter 腾讯地图组件，探索 PlatformView 开发的最佳实践，开发中。
 
 接口基本遵循 `google_map`，理论上可以使用 `google_maps_flutter_platform_interface`
@@ -18,3 +29,4 @@ SurfaceView 问题还没解决之前就移除 hybrid composition 的愚蠢决定
 ```
 flutter pub run pigeon --input lib/src/pigeon.dart
 ```
+
