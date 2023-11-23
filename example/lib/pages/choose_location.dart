@@ -21,7 +21,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
   }
 
   TencentMapController? _controller;
-  Marker? _centerMarker;
+  // Marker? _centerMarker;
 
   bool isInitCenter = false;
 
@@ -38,14 +38,14 @@ class _ChooseLocationState extends State<ChooseLocation> {
       ),
       zoom: 15,
     ));
-    _centerMarker = await _controller?.addMarket(
-      MarkerOptions(
-        position: LatLng(
-          latitude: location.latitude,
-          longitude: location.longitude,
-        ),
-      ),
-    );
+    // _centerMarker = await _controller?.addMarket(
+    //   MarkerOptions(
+    //     position: LatLng(
+    //       latitude: location.latitude,
+    //       longitude: location.longitude,
+    //     ),
+    //   ),
+    // );
     _updateLocationAddressList(location);
   }
 
@@ -54,7 +54,14 @@ class _ChooseLocationState extends State<ChooseLocation> {
     _locationAddressList = list ?? [];
     if (_locationAddressList.isNotEmpty) {
       _locationAddress = _locationAddressList.first;
-      setState(() {});
+      if (context.mounted) {
+        setState(() {});
+        PrimaryScrollController.of(context).animateTo(
+          0,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.ease,
+        );
+      }
       // move
       _controller?.moveCamera(
         CameraPosition(
@@ -169,6 +176,20 @@ class _ChooseLocationState extends State<ChooseLocation> {
     return list;
   }
 
+  void toLocation() {
+    if (_location == null) return;
+    _controller?.moveCamera(
+      CameraPosition(
+        target: LatLng(
+          latitude: _location!.latitude,
+          longitude: _location!.longitude,
+        ),
+        zoom: 15,
+      ),
+      const Duration(milliseconds: 100),
+    );
+  }
+
   @override
   build(context) {
     return Scaffold(
@@ -230,6 +251,37 @@ class _ChooseLocationState extends State<ChooseLocation> {
                       Icons.location_on_sharp,
                       color: Colors.blueAccent,
                       size: 36,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  right: 12,
+                  bottom: 12,
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(4),
+                      onTap: () {
+                        toLocation();
+                      },
+                      child: Ink(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(4),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),
+                              offset: const Offset(0, 2),
+                              blurRadius: 2,
+                            ),
+                          ],
+                        ),
+                        child: const Icon(
+                          Icons.my_location_rounded,
+                          color: Colors.blueAccent,
+                        ),
+                      ),
                     ),
                   ),
                 ),
