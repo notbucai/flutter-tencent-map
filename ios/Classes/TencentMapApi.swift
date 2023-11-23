@@ -65,6 +65,7 @@ class _TencentMapApi: NSObject, TencentMapApi {
     func setMyLocationButtonEnabledEnabled(_: NSNumber, error _: AutoreleasingUnsafeMutablePointer<FlutterError?>) {}
 
     func setMyLocationEnabledEnabled(_ enabled: NSNumber, error _: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
+        print("setMyLocationEnabledEnabled:\(enabled)")
         mapView.showsUserLocation = enabled.boolValue
     }
 

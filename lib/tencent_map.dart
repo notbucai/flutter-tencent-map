@@ -10,3 +10,5 @@ export 'src/pigeon.g.dart'
         MyLocationStyle,
         MyLocationType;
 export 'src/tencent_map.dart';
+
+export 'src/utils.dart' show LocationUtils;

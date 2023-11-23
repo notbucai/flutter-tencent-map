@@ -67,6 +67,7 @@ fun Pigeon.MarkerOptions.toMarkerOptions(binding: FlutterPluginBinding): MarkerO
     anchor?.let { options.anchor(it[0].toFloat(), it[1].toFloat()) }
     draggable?.let { options.draggable(it) }
     zIndex?.let { options.zIndex(it.toFloat()) }
+
     options
   }
 }
